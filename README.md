@@ -1,4 +1,5 @@
 # crypto-aggregator
+
 Continuously scans exchanges and calculates the volume-weighted average price of each cryptocurrency.
 
 [![NPM](https://badge.fury.io/js/crypto-aggregator.svg)](https://www.npmjs.com/package/crypto-aggregator)
@@ -29,13 +30,14 @@ npm install crypto-aggregator --save
 # Usage
 
 ## Simple
+
 In its simplest form, it can run as:
 
 ```javascript
 let options = {
   // Forex conversions
   getForexData_oxr: true, // Mocked values will be uses if set to false
-  osx_app_id: "YOUR_OSX_APP_ID", // openexchangerates.org app id
+  osx_app_id: "YOUR_OSX_APP_ID" // openexchangerates.org app id
 };
 
 var ca = require("../index.js")(options);
@@ -43,6 +45,7 @@ ca.start(options);
 ```
 
 ## Other options and default values
+
 Below are other options and their default values:
 
 ```javascript
@@ -116,6 +119,86 @@ options: {
   }
 ```
 
+# Data Structure and Callbacks
+
+For simplicity, all discovered data and VWAP price for all cryptocurrencies is kept in memory. Callback functions are provided which can be used to write data in your own database.
+
+The in-memory values are as follows:
+
+## VWAP Prices
+
+The VWAP price for all cryptos are in `pricesInUSD`. Example:
+
+```javascript
+let options = {
+  // Forex conversions
+  getForexData_oxr: false, // Mocked values will be uses if set to false
+  osx_app_id: "YOUR_OSX_APP_ID" // openexchangerates.org app id
+};
+
+var ca = require("../index.js")(options);
+ca.start(options);
+
+// Print the calculated VWAP price of BTC after 5 minutes:
+setTimeout(() => {
+  let pricesInUSD = ca.pricesInUSD;
+  let log = ca.log;
+
+  log.info(`BTC price is: `, pricesInUSD["BTC"]);
+}, 5 * 60 * 1000);
+```
+
+## Market Pairs
+
+Makrket pairs are kept inside an object called `tickers`. They are organized under a tree of:
+
+```javascript
+let cryptoName = "BTC"; // String
+let exchangeName = "binance"; // String
+let index = 0; // String
+tickers[cryptoName][exchangeName]["pairs"][index].ticker;
+tickers[cryptoName][exchangeName]["pairs"][index].market;
+```
+
+where `market` and `ticker` are taken directly from `ccxt` output of [`fetchTicker` and `fetchMarkets`](https://github.com/ccxt/ccxt/wiki/Manual) functions.
+
+Example:
+
+```javascript
+let options = {
+  // Forex conversions
+  getForexData_oxr: true, // Mocked values will be uses if set to false
+  osx_app_id: "YOUR_OSX_APP_ID" // openexchangerates.org app id
+};
+
+var ca = require("../index.js")(options);
+ca.start(options);
+
+// Print discovered tickers after 5 minutes:
+setTimeout(() => {
+  let tickers = ca.tickers;
+  let log = ca.log;
+
+  log.info(`tickers=`, JSON.stringify(tickers));
+}, 5 * 60 * 1000);
+
+// Output:
+// INFO: tickers = {
+//     'BTC' : {
+//       'binance': {
+//         pairs: [{ticker: {...}, market: {symbol: 'BTC/USDT', ...}},
+//                 {ticker: {...}, market: {symbol: 'BTC/BNB', ...}}
+//                 ]
+//       },
+//       'kraken': {
+//         pairs: [{ticker: {...}, market: {symbol: 'ETH/BTC', ...}},
+//                 {ticker: {...}, market: {symbol: 'BTC/USDT', ...}},
+//               ]
+//       }
+//     }
+//  ...
+//   }
+```
 
 # Logger
 
@@ -127,4 +210,4 @@ Free to use under [ICS](https://opensource.org/licenses/ISC). Backlinks and cred
 
 # Issue and Pull Requests
 
-Issues and pull requests are welcome.
+Issues, contributions, and pull requests are welcome!

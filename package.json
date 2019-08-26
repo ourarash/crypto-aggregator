@@ -1,8 +1,8 @@
 {
   "name": "crypto-aggregator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Aggregates cryptocurrency prices from various exchanges. Prices from different exchanges are weighted by their volume. The result is the Volume-Weighted-Average-Price (VWAP) for each cryptocurrency.",
-  "main": "examples/demo.js",
+  "main": "lig/ca.js",
   "scripts": {
     "test": "test.js"
   },
