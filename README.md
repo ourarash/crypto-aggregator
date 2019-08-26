@@ -1,6 +1,6 @@
 # crypto-aggregator
 
-Continuously scans exchanges and calculates the volume-weighted average price of each cryptocurrency.
+Continuously scans exchanges and calculates the volume-weighted average market pair price (VWAMPP) of each cryptocurrency.
 
 [![NPM](https://badge.fury.io/js/crypto-aggregator.svg)](https://www.npmjs.com/package/crypto-aggregator)
 [![NPM Downloads][downloadst-image]][downloads-url]
