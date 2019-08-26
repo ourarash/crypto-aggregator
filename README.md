@@ -121,13 +121,13 @@ options: {
 
 # Data Structure and Callbacks
 
-For simplicity, all discovered data and VWAP price for all cryptocurrencies is kept in memory. Callback functions are provided which can be used to write data in your own database.
+For simplicity, all discovered data and VWAMPP price for all cryptocurrencies is kept in memory. Callback functions are provided which can be used to write data in your own database.
 
 The in-memory values are as follows:
 
-## VWAP Prices
+## VWAMPP Prices
 
-The VWAP price for all cryptos are in `pricesInUSD`. Example:
+The VWAMPP price for all cryptos are in `pricesInUSD`. Example:
 
 ```javascript
 let options = {
@@ -139,7 +139,7 @@ let options = {
 var ca = require("../index.js")(options);
 ca.start(options);
 
-// Print the calculated VWAP price of BTC after 5 minutes:
+// Print the calculated VWAMPP price of BTC after 5 minutes:
 setTimeout(() => {
   let pricesInUSD = ca.pricesInUSD;
   let log = ca.log;

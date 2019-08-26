@@ -18,7 +18,7 @@ let options = {
 var ca = require("../index.js")(options);
 ca.start(options);
 
-// Print the calculated VWAP price of BTC after 5 minutes:
+// Print the calculated VWAMPP price of BTC after 5 minutes:
 setTimeout(() => {
   let pricesInUSD = ca.pricesInUSD;
   let log = ca.log;
