@@ -16,7 +16,13 @@ Continuously scans exchanges and calculates the volume-weighted average market p
 - [x] Accepts API key from [https://openexchangerates.org/](openexchangerates.org/) to convert between foreign exchanges
 - [x] Accepts callbacks for each time the price is updated
 
-#Installation
+# What is volume-weighted average market pair price (VWAMPP)?
+
+<pre>Volume-Weighted Average Market Market Pair Price (VWAMPP) is the average of the market pair prices from all exchanges where each market pair price is weighted by its volume.</pre>
+
+For more details on how VWAMPP is calculated and why it is used, see [this article](https://medium.com/@ourarash/crypto-aggregator-an-open-source-alternative-to-coinmarketcap-a0f08cb5f4ff).
+
+# Installation
 
 ```bash
 npm install crypto-aggregator --save
