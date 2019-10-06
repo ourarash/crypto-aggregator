@@ -1,6 +1,6 @@
 {
   "name": "crypto-aggregator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Aggregates cryptocurrency prices from various exchanges. Prices from different exchanges are weighted by their volume. The result is the Volume-Weighted-Average-Market-Pair-Price (VWAMPP) for each cryptocurrency.",
   "main": "lig/ca.js",
   "scripts": {
