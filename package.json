@@ -32,7 +32,7 @@
     "ansicolor": "^1.1.71",
     "as-table": "^1.0.31",
     "asciichart": "^1.5.7",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.8.16",
     "ccxt": "^1.18.850",
